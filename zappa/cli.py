@@ -523,7 +523,7 @@ class ZappaCLI(object):
                 continue
 
             try:
-                message = base64.b64decode(message.strip())
+                message = base64.b64decode(message)
                 # print("[{}] {}".format(str(timestamp), message))
             except:
                 message = message.strip()
