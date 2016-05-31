@@ -522,10 +522,8 @@ class ZappaCLI(object):
             if "END RequestId" in message:
                 continue
 
-            import sys
-
             try:
-                message = base64.b64decode(message.strip())
+                message = base64.b64decode(str(message.strip()))
             except:
                 message = message.strip()
 
