@@ -524,14 +524,13 @@ class ZappaCLI(object):
 
             import sys
 
-            reload(sys)
-            sys.setdefaultencoding('utf8')
-
             try:
-                message = base64.b64decode(message.strip()).encode('utf-8')
+                message = base64.b64decode(message.strip())
+
             except TypeError:
                 message = message.strip()
 
+            print(type(message))
             print("[" + str(timestamp) + "] " + message)
 
 
