@@ -522,10 +522,11 @@ class ZappaCLI(object):
             if "END RequestId" in message:
                 continue
 
-            try:
-                message = base64.b64decode(message.strip())
-            except:
-                message = message.strip()
+            message = message.strip()
+            # try:
+            #     message = base64.b64decode(message.strip())
+            # except:
+            #     
 
             print("[{}] {}".format(str(timestamp), message))
 
