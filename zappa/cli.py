@@ -522,6 +522,11 @@ class ZappaCLI(object):
             if "END RequestId" in message:
                 continue
 
+            import sys
+
+            reload(sys)
+            sys.setdefaultencoding('utf8')
+
             try:
                 message = base64.b64decode(message.strip()).encode('utf-8')
             except TypeError:
