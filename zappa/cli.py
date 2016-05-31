@@ -523,7 +523,7 @@ class ZappaCLI(object):
                 continue
 
             try:
-                message = base64.b64decode(message)
+                message = base64.b64decode(message.strip())
             except TypeError:
                 message = message.strip()
 
