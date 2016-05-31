@@ -524,11 +524,11 @@ class ZappaCLI(object):
 
             try:
                 message = base64.b64decode(message.strip())
-                print("[{}] {}".format(str(timestamp), message))
+                # print("[{}] {}".format(str(timestamp), message))
             except:
                 message = message.strip()
-                print("[{}] {}".format(str(timestamp), message))
-
+                # print("[{}] {}".format(str(timestamp), message))
+            print(message)
 
     def execute_prebuild_script(self):
         """
