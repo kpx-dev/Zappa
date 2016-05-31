@@ -523,10 +523,10 @@ class ZappaCLI(object):
                 continue
 
             try:
-                message = base64.b64decode(message.strip())
+                message = base64.b64decode(message.strip()).encode('utf-8')
             except TypeError:
                 message = message.strip()
-                
+
             print("[" + str(timestamp) + "] " + message)
 
 
