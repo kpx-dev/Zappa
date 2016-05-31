@@ -522,13 +522,13 @@ class ZappaCLI(object):
             if "END RequestId" in message:
                 continue
 
-            try:
-                message = base64.b64decode(message)
-                # print("[{}] {}".format(str(timestamp), message))
-            except:
-                message = message.strip()
-                # print("[{}] {}".format(str(timestamp), message))
-            print(message)
+            # message = 
+            # try:
+            #     message = base64.b64decode(message)
+            # except TypeError:
+
+            print("[" + str(timestamp) + "] " + message.strip())
+
 
     def execute_prebuild_script(self):
         """
