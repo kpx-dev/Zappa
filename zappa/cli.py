@@ -526,12 +526,12 @@ class ZappaCLI(object):
 
             try:
                 message = base64.b64decode(message.strip())
-
-            except TypeError:
+            except:
                 message = message.strip()
 
             print(type(message))
             print("[" + str(timestamp) + "] " + message)
+            print('after print...')
 
 
     def execute_prebuild_script(self):
