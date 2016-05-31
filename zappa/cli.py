@@ -533,7 +533,7 @@ class ZappaCLI(object):
             # print('message after decode is....')
             # print(message)
 
-            print("[{}] {}".format(str(timestamp), message))
+            print("[{}] {}".format(str(timestamp), message.encode('utf-8')))
 
 
     def execute_prebuild_script(self):
