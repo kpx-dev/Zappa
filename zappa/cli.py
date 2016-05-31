@@ -524,7 +524,7 @@ class ZappaCLI(object):
 
             try:
                 message = base64.b64decode(message.strip())
-            except TypeError:
+            except:
                 message = message.strip()
 
             print("[{}] {}".format(str(timestamp), message))
