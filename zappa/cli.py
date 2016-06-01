@@ -532,7 +532,7 @@ class ZappaCLI(object):
             # print(type(message))
             # print(type(original_message))
             # print(original_message)
-            #
+            
             # print(message)
             print("[" + str(timestamp) + "] " + message.strip())
             # print('after print...')
