@@ -356,16 +356,6 @@ class ZappaCLI(object):
                 print("Function does not exist, please deploy first. Ex: zappa deploy {}".format(self.api_stage))
                 return
 
-            # try:
-            #     response = self.zappa.lambda_client.get_function(FunctionName=self.lambda_name)
-            #     self.lambda_arn = str(response['Configuration']['FunctionArn'])
-            #     self.lambda_name = str(response['Configuration']['FunctionName'])
-            #     role = self.zappa.iam.Role(self.zappa.role_name)
-            #     self.zappa.credentials_arn = role.arn
-            # except:
-            #     logger.warn('Function {} does not exist, creating a new one.'.format(self.lambda_name))
-            #     self.update()
-
             print("Scheduling..")
             self.zappa.schedule_events(
                 lambda_arn=function_response['Configuration']['FunctionArn'],
@@ -598,19 +588,18 @@ def handle(): # pragma: no cover
     """
     Main program execution handler.
     """
-    cli = ZappaCLI()
-    cli.handle()
-    # try:
-    #
-    #     sys.exit(cli.handle())
-    # except (KeyboardInterrupt, SystemExit): # pragma: no cover
-    #     if cli.zip_path: # Remove the Zip from S3 upon failure.
-    #         cli.remove_uploaded_zip()
-    #     return
-    # except Exception as e:
-    #     if cli.zip_path: # Remove the Zip from S3 upon failure.
-    #         cli.remove_uploaded_zip()
-    #     print(e)
+
+    try:
+        cli = ZappaCLI()
+        sys.exit(cli.handle())
+    except (KeyboardInterrupt, SystemExit): # pragma: no cover
+        if cli.zip_path: # Remove the Zip from S3 upon failure.
+            cli.remove_uploaded_zip()
+        return
+    except Exception as e:
+        if cli.zip_path: # Remove the Zip from S3 upon failure.
+            cli.remove_uploaded_zip()
+        print(e)
 
 if __name__ == '__main__': # pragma: no cover
     handle()
