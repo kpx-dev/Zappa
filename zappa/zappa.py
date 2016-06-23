@@ -879,8 +879,9 @@ class Zappa(object):
                     RoleArn=self.credentials_arn
                 )
 
-            if 'RuleArn' in rule_response:
-                logger.debug('Rule created. ARN {}'.format(rule_response['RuleArn']))
+            if 'RuleArn' not in rule_response:
+                print('Problem creating new rule')
+                return
 
             logger.debug('Adding new permission to invoke Lambda function: {}'.format(lambda_name))
             permission_response = self.lambda_client.add_permission(

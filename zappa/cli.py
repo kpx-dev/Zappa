@@ -519,7 +519,6 @@ class ZappaCLI(object):
                 temp_settings.close()
                 lambda_zip.write(temp_settings.name, 'zappa_settings.py')
                 os.remove(temp_settings.name)
-                # lambda_zip.close()
 
 
     def remove_local_zip(self):
